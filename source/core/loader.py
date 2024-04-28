@@ -13,7 +13,7 @@ def load_rules():
 
 
 def load_config():
-    with open("source/config/config.yml") as file:
+    with open("source/config/config_dev.yml") as file:
         config = yaml.safe_load(file)
     return config
 
@@ -38,6 +38,5 @@ MAX_TOKENS = CONFIG.get("MAX_TOKENS")
 PROTOCOLS = RULES.get("PROTOCOLS")
 MISSION_TEMPLATES = RULES.get("MISSION TEMPLATES")
 
-# STATUS and ABOUT ME
+# ABOUT ME
 ABOUT_ME = CONFIG.get("ABOUT")
-STATUS = CONFIG.get("STATUS")

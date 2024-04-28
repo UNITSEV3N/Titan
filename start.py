@@ -6,22 +6,11 @@ from source.core.loader import *
 import aiosqlite
 import datetime
 import os
+import platform
+import socket
 
 logging.getLogger("discord").setLevel(logging.WARN)
 modules = ["source.cogs.gpt_module"]
-
-# Checks that the database file doenst exceed a certain size. (1MB)
-def check_file_size(file_path, max_size):
-    if os.path.exists(file_path):
-        file_size = os.path.getsize(file_path)
-        if file_size <= max_size:
-            return True
-        else:
-            return False
-    else:
-        # File doesn't exist
-        return False
-
 
 class Titan(commands.Bot):
     def __init__(self, command_prefix="!", intents=discord.Intents.all()):
@@ -37,8 +26,9 @@ class Titan(commands.Bot):
 
     async def on_ready(self):
         print(f"Logged in as {self.user.name}")
+        print(socket.gethostname())
 
-        # Rich Presence
+        # Rich Presence (change it to ur prefered settings)
         # OPTIONS
         # do_not_disturb
         # online
