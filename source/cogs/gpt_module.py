@@ -1,6 +1,6 @@
 # ChatGPT Integration
 # 3 Commands used to create small - medium quest for users
-# Has sets of rules and templates it will follow (source/config/check config.yml)
+# Has sets of rules and templates it will follow (source/config/check rules.yml)
 # Bot has a 1 day cooldown per person (will change it to a 10 per day for the whole guild)
 
 import asyncio
@@ -13,21 +13,28 @@ from source.core.loader import *
 OpenAI = OpenAI(api_key=os.environ.get("AI_KEY"))
 
 
+# TIMERS
+TIMER = 86400
+RATE = 1
+
 # AI Prompt: max_tokens, temperature, messages, model
 # Returns ChatGPT reponse.
 # All AI commands use this function
 def ai_prompt(prompt: str):
-    chat_response = OpenAI.chat.completions.create(
-        max_tokens=MAX_TOKENS,
-        temperature=TEMPERATURE,
-        messages=[
-            {
-                "role": "user",
-                "content": f"{prompt} Here are your rules: {PROTOCOLS}, Follow these templates given: {MISSION_TEMPLATES}"
-            }
-        ],
-        model=AI_MODEL, )
-    return chat_response
+    try:
+        chat_response = OpenAI.chat.completions.create(
+            max_tokens=MAX_TOKENS,
+            temperature=TEMPERATURE,
+            messages=[
+                {
+                    "role": "user",
+                    "content": f"{prompt} Here are your rules: {PROTOCOLS}, Follow these templates given: {MISSION_TEMPLATES}"
+                }
+            ],
+            model=AI_MODEL, )
+        return chat_response.choices[0].message.content
+    except:
+        return "NO KEY! - Please get a key from https://platform.openai.com/api-keys"
 
 class QuestGiver(commands.Cog):
     def __init__(self, client: commands.Bot):
@@ -40,7 +47,7 @@ class QuestGiver(commands.Cog):
                 return True
 
         await interaction.response.send_message("You do not have permission to use this command.", ephemeral=True)
-        print("Failed Request: Incorrect Roles!")
+        print("\nFailed Request: Incorrect Roles!")
         return False
 
     # -----------------------------------------------------------------------------------------------------------------#
@@ -48,7 +55,7 @@ class QuestGiver(commands.Cog):
     # Create-patrol
     # Creates a patrol route from a to b
     # Less accurate feature since the templates are missing some data
-    @app_commands.checks.cooldown(1, 86400)
+    @app_commands.checks.cooldown(RATE, TIMER)
     @app_commands.command(name="create_patrol", description="AI - Creates patrol")
     async def create_patrol(self, interaction, route: str):
         if not await self.check_role(interaction):
@@ -59,7 +66,7 @@ class QuestGiver(commands.Cog):
         prompt = ai_prompt(f"Give me a route: {route}")
 
         await asyncio.sleep(3)
-        await interaction.followup.send(f"{prompt.choices[0].message.content}")
+        await interaction.followup.send(f"{prompt}")
 
     @create_patrol.error
     async def patrol_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -73,7 +80,7 @@ class QuestGiver(commands.Cog):
 
     # Create-mission
     # Creates a mission with theme given by user.
-    @app_commands.checks.cooldown(1, 86400)
+    @app_commands.checks.cooldown(RATE, TIMER)
     @app_commands.command(name="create_mission", description="AI - Creates Mission")
     async def create_mission(self, interaction, theme: str):
         if not await self.check_role(interaction):
@@ -99,7 +106,7 @@ class QuestGiver(commands.Cog):
 
     # Create-frago
     # Creates a frago mission with themed given by user.
-    @app_commands.checks.cooldown(1, 86400)
+    @app_commands.checks.cooldown(RATE, TIMER)
     @app_commands.command(name="create_frago", description="AI - Creates Frago")
     async def create_frago(self, interaction, theme: str):
         if not await self.check_role(interaction):
@@ -120,6 +127,16 @@ class QuestGiver(commands.Cog):
                 content=f"DENIED! I can only complete this request once per day. Try again tomorrow!", ephemeral=True)
         else:
             await interaction.response.send_message(content=str(error), ephemeral=True)
+
+    # -----------------------------------------------------------------------------------------------------------------#
+
+    # Greetings - Greets user of command
+    # Send a greeting to the user
+    @app_commands.command(name="greetings", description="Will return a greeting from bot")
+    async def greetings_01(self, interaction):
+        await interaction.response.defer(ephemeral=False)
+        user = interaction.user
+        await interaction.followup.send(f"Greetings {user.mention}, I'm {self.client.user.name}")
 
     # -----------------------------------------------------------------------------------------------------------------#
 
