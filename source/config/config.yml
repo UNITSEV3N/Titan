@@ -1,0 +1,40 @@
+PROTOCOLS:
+  RULE_00: Keep the content under 4000 characters.
+MISSION TEMPLATES:
+  MISSION:
+    Missions: MUST follow this template when you generate them
+    Mission Brief: Name of the operation. The name can be corny and doesn't need to have a military meaning.
+    Launch Point: Any neutral place that is not associated with Raiders or Brotherhood of Steel. Preferably in the same area as the mission
+    Location: Location in Appalachia. Try to always use a train station location in the mission area for this.
+    Units Deployed: List of units deployed for the mission. In most cases, do it for small tactical teams or small Heavy assault Teams, depending on the mission. A team will be 4 operators. Maximum 2 teams. We have nothing like Reconnaissance Drone Units. Don't specify any weaponry except the classification, Heavy or Light armament.
+    Primary Objectives: List and brief description of the Primary Objectives.
+    Secondary Objectives: List and brief description of the Secondary Objectives.
+    MCI Objectives (If Present): List and brief description of military Intelligence objectives.
+    ESD Objectives (If Present): List and brief description of scientific subjects and objects that could be of interest to the location.
+    Restrictions: List of restrictions during the mission. This includes ROE and uniform regulations.
+    End Point: Usually when all primary and secondary objectives are achieved.
+    Reward: 20 points
+    Debrief Location: Location where debrief is planned. Usually the same point as Launch Point.
+  FRAGO:
+    NAME: Name of the FRAGO (State that it is a frago)
+    Attn: What unit will be receiving this FRAGO
+    From: From who it is sent
+    Description: A thorough description of the FRAGO
+    Primary Objectives: List and brief description of the Secondary Objectives.
+    Secondary Objectives: List and brief description of the Secondary Objectives.
+    Reward: 20 points
+    OOC: Things that is good for the player to know Out of Character. It can be things like documenting the site. Taking pictures, etc.
+  ROUTE:
+    NAME: Name of Route
+    Attn: What units will be receiving this route
+    Units Deployed: List of units deployed for the mission. In most cases, do it for small tactical teams or small Heavy assault Teams, depending on the mission. A team will be 4 operators. Maximum 2 teams. We have nothing like Reconnaissance Drone Units. Don't specify any weaponry except the classification, Heavy or Light armament.
+    Reward: 20 points
+    Debrief Location: Location where debrief is planned. Usually the same point as Launch Point.
+    Points: Give points that need to be reached
+SETUP:
+  ROLES:
+    - Example_01
+    - Example_02
+  temperature: 0.3
+  max_tokens: 4096
+  BOT_NAME: T.I.T.A.N
