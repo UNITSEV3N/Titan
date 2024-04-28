@@ -18,3 +18,7 @@ PRESENCE = Custom Status
 6. Add or remove rules/templates in rules.yml
 7. Install the required packages run ``pip install -r .\requirements.txt``
 8. Run bot ``python start.py``
+
+# Hosting
+
+I use https://cybrancee.com/ to host my bots (cheap too)

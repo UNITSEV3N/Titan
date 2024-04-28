@@ -1,5 +1,2 @@
-# Files to Ignore
-
-/.env
 !/source/config/config_dev.yml
-
+!/.env
