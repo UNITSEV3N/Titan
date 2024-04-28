@@ -6,8 +6,6 @@ from source.core.loader import *
 import aiosqlite
 import datetime
 import os
-import platform
-import socket
 
 logging.getLogger("discord").setLevel(logging.WARN)
 modules = ["source.cogs.gpt_module"]
@@ -26,7 +24,6 @@ class Titan(commands.Bot):
 
     async def on_ready(self):
         print(f"Logged in as {self.user.name}")
-        print(socket.gethostname())
 
         # Rich Presence (change it to ur prefered settings)
         # OPTIONS
