@@ -68,9 +68,9 @@ I use https://cybrancee.com/ to host my bots (cheap too)
 ![Alt text](https://i.ibb.co/M2RKt1j/cmd.png "hosting")
 
 - Press Start
-- It will run the requirements.txt and install all the required packages
-- 
+- It will install all the required packages
 
 If everything has been set up correctly, the bot should be running
 
 ![Alt text](https://i.ibb.co/JqcnD4Y/running.png "hosting")
+
