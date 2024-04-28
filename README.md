@@ -51,7 +51,7 @@ I use https://cybrancee.com/ to host my bots (cheap too)
 
 4. now go back to the root
     - drag the .env, start.py, requirements.txt files 
-    - insure it looks like the image in step one
+    - insure it looks like the image in step one (ignore the discord.log file the bot will create this when required)
 
 5. Go to the startup tab
 
