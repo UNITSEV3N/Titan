@@ -32,7 +32,7 @@ I use https://cybrancee.com/ to host my bots (cheap too)
 #### SETUP HOST - This is for those who want to use cybrancee
 
 
-1. After creating your account go to the file
+1. Go to file tab
 
 ![Alt text](https://i.ibb.co/t4fgQLk/files.png "hosting")
 
