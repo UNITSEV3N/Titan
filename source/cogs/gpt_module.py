@@ -92,7 +92,7 @@ class QuestGiver(commands.Cog):
                            f"\nCreate mission with the theme: {theme}")
 
         await asyncio.sleep(5)
-        await interaction.followup.send(f"{prompt.choices[0].message.content}")
+        await interaction.followup.send(f"{prompt}")
 
     @create_patrol.error
     async def mission_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -118,7 +118,7 @@ class QuestGiver(commands.Cog):
                            f"\nCreate mission with the theme: {theme}")
 
         await asyncio.sleep(5)
-        await interaction.followup.send(f"{prompt.choices[0].message.content}")
+        await interaction.followup.send(f"{prompt}")
 
     @create_frago.error
     async def frago_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -127,16 +127,6 @@ class QuestGiver(commands.Cog):
                 content=f"DENIED! I can only complete this request once per day. Try again tomorrow!", ephemeral=True)
         else:
             await interaction.response.send_message(content=str(error), ephemeral=True)
-
-    # -----------------------------------------------------------------------------------------------------------------#
-
-    # Greetings - Greets user of command
-    # Send a greeting to the user
-    @app_commands.command(name="greetings", description="Will return a greeting from bot")
-    async def greetings_01(self, interaction):
-        await interaction.response.defer(ephemeral=False)
-        user = interaction.user
-        await interaction.followup.send(f"Greetings {user.mention}, I'm {self.client.user.name}")
 
     # -----------------------------------------------------------------------------------------------------------------#
 
