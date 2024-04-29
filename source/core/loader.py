@@ -13,7 +13,7 @@ def load_rules():
 
 
 def load_config():
-    with open("source/config/config_dev.yml") as file:
+    with open("source/config/config.yml") as file:
         config = yaml.safe_load(file)
     return config
 
