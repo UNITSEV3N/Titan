@@ -27,10 +27,13 @@ class Titan(commands.Bot):
 
         # Rich Presence (change it to ur prefered settings)
         # OPTIONS
+        # -------------------------- #
         # do_not_disturb
         # online
         # offline
         # idle
+        # -------------------------- #
+
         await self.change_presence(status=discord.Status.do_not_disturb,
                                    activity=discord.CustomActivity(f"{ABOUT_ME}"))
 
