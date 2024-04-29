@@ -1,2 +1,5 @@
-/source/config/config_dev.yml
+# Files to Ignore
+
+# Development Files
 /.env
+/source/config/config_dev.yml

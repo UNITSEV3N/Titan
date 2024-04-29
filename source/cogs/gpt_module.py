@@ -19,7 +19,7 @@ RATE = 1
 
 # AI Prompt: max_tokens, temperature, messages, model
 # Returns ChatGPT reponse.
-# All AI commands use this function
+# All Quest AI commands use this function
 def ai_prompt(prompt: str):
     try:
         chat_response = OpenAI.chat.completions.create(
