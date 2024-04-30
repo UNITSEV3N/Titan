@@ -3,7 +3,6 @@
 import logging
 from discord.ext import commands
 from source.core.loader import *
-import aiosqlite
 import datetime
 import os
 

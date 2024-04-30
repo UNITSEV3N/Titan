@@ -13,14 +13,15 @@ from source.core.loader import *
 OpenAI = OpenAI(api_key=os.environ.get("AI_KEY"))
 
 
-# TIMERS
+# TIMERS/COOLDOWNS
 TIMER = 86400
 RATE = 1
+
 
 # AI Prompt: max_tokens, temperature, messages, model
 # Returns ChatGPT reponse.
 # All Quest AI commands use this function
-def ai_prompt(prompt: str):
+async def ai_prompt(prompt: str):
     try:
         chat_response = OpenAI.chat.completions.create(
             max_tokens=MAX_TOKENS,
@@ -32,9 +33,11 @@ def ai_prompt(prompt: str):
                 }
             ],
             model=AI_MODEL, )
+
         return chat_response.choices[0].message.content
     except:
         return "NO KEY! - Please get a key from https://platform.openai.com/api-keys"
+
 
 class QuestGiver(commands.Cog):
     def __init__(self, client: commands.Bot):
@@ -129,7 +132,6 @@ class QuestGiver(commands.Cog):
             await interaction.response.send_message(content=str(error), ephemeral=True)
 
     # -----------------------------------------------------------------------------------------------------------------#
-
 
 async def setup(client: commands.Bot) -> None:
     await client.add_cog(QuestGiver(client))
