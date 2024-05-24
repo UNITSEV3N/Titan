@@ -1,5 +1,13 @@
 # T.I.T.A.N - Total Information Tactical Awareness Nexus
 
+### NOTE:
+This project is still a WIP
+
+New features currently being worked on
+- Ranking system
+- Database system to store ranks
+- Rank card generator (created with Pillow)
+
 # FEATURES
 
 ### AI - Create 
